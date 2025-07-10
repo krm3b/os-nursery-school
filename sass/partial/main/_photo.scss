@@ -1,0 +1,87 @@
+@use '../_mixin' as m;
+
+.photo {
+    margin-block: m.$section-margin-pc;
+
+    &__slick {
+        width: 100%;
+        position: relative;
+        
+        img {
+            width: 100%;
+            height: 30vh;
+            object-fit: cover;
+            padding-inline: 20px;
+        }
+    }
+
+    .slick-arrow {
+        position: absolute;
+        top: 50%;
+        height: 30px;
+        width: 30px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 2;
+    
+
+        &::before {
+            content: "";
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: opacity .3s ease, transform .3s ease;
+            opacity: 1;
+        }
+
+        &:hover::before {
+            transform: scale(1.2);
+            opacity: 0.6;
+        }
+    }
+    .slick-prev {
+        left: 7%;
+        &::before {
+            background-image: url(../img/photo_CaretCircleLeft.png);
+        }    
+    }
+    .slick-next {
+        right: 7%;
+        &::before {
+            background-image: url(../img/photo_CaretCircleRight.png);
+        }    
+    }
+
+    .decoration {
+        height: 20px;
+        width: 100%;
+        background-image: url("../img/photo_line1.png");
+        background-repeat: repeat-x;
+        background-size: contain;
+        animation: decoSwitch 2s steps(1, end) infinite;
+    
+        &--top {
+            margin-bottom: 20px;
+        }
+    
+        &--bottom {
+            margin-top: 20px;
+        }
+    }
+}
+
+// ▼ アニメーションで背景画像を切り替える
+@keyframes decoSwitch {
+    0% {
+        background-image: url("../img/photo_line1.png");
+    }
+    50% {
+        background-image: url("../img/photo_line2.png");
+    }
+    100% {
+        background-image: url("../img/photo_line1.png");
+    }
+}

@@ -1,0 +1,34 @@
+@use '../_mixin' as m;
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 9999;
+
+    img {
+        width: 100px;
+    }
+
+    .circle {
+        position: absolute;
+        top: 30%;
+        left: 45%;
+    }
+    .triangle {
+        position: absolute;
+        top: 37%;
+        left: 48%;
+    }
+    .square {
+        position: absolute;
+        top: 45%;
+        left: 46%;
+    }
+    .text {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

@@ -89,6 +89,7 @@ img {
 .js-fade.is-show {
   opacity: 1;
   transform: translateY(0);
+  visibility: visible;
 }
 
 .divider {

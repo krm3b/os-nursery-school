@@ -84,25 +84,6 @@ $(function () {
     });
 });
 
-// $(function () {
-//     $('.life__toggle-btn .btn').on('click', function () {
-//         var target = $(this).hasClass('baby') ? 'baby' : 'kids';
-
-//         // ボタンの切り替え
-//         $('.life__toggle-btn .btn').removeClass('show');
-//         $(this).addClass('show');
-
-//         // コンテンツの切り替え
-//         $('.life__flex--item').removeClass('active');
-//         $('.life__flex--item.' + target).addClass('active');
-//     });
-
-//     // 初期表示：babyを表示
-//     $('.life__toggle-btn .btn.baby').addClass('show');
-//     $('.life__flex--item.baby').addClass('active');
-// });
-
-
   /*=================================================
   PICK UP スライダー
   ===================================================*/

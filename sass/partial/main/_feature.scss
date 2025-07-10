@@ -1,0 +1,193 @@
+@use '../_mixin' as m;
+
+.feature {
+    margin-block: m.$section-margin-pc;
+    position: relative;
+
+    .crayon-pic {
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        animation: sway 2s infinite ease-in-out;
+        z-index: -1;
+    }
+
+    .crayon1 {
+        top: 0;
+        right: 0;
+        background: url("../img/crayon1.png") no-repeat center/contain;
+        display: block;
+
+        @include m.pc {
+            display: none;
+        }
+    }
+
+    .crayon2 {
+        bottom: 0;
+        left: 0;
+        background: url("../img/crayon2.png") no-repeat center/contain;
+        display: block;
+        
+        @include m.pc {
+            display: none;
+        }
+    }
+
+    &__flex {
+        display: flex;
+
+        @include m.tab {
+            flex-direction: column;
+        }
+        &--text {
+            width: 70%;
+
+            @include m.tab {
+                width: 100%;
+            }
+            
+            h3 {
+                font-weight: normal;
+                margin-bottom: 10px;
+                @include m.tab {
+                    font-size: 1rem;
+                }
+                span {
+                    margin-right: 10px;
+                }
+            }
+
+            p {
+                margin-bottom: 50px;
+            }
+
+            .initiative-btn {
+                display: inline-block;
+                margin-left: 20%;
+                background-color: #A6C48A;
+                border: 3px #A6C48A solid;
+                border-radius: 6px;
+                padding: 3% 20%;
+                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                transition: .3s ease;
+                position: relative;
+
+                @include m.tab {
+                    margin-left: 0;
+                    width: 100%;
+                }
+                
+                &::before,
+                &::after {
+                    position: absolute;
+                    top: 50%;
+                    // 45度左に回転
+                    transform: translateY(-50%) rotate(45deg);
+                    right: 20%;
+                    content: "";
+                    border-top: #5C4B3B 2px solid;
+                    border-right: #5C4B3B 2px solid;
+                    width: 15px;
+                    height: 15px;
+                    transition: right .3s ease;
+                }
+
+                &::before {
+                    right: 22%;
+                    @include m.tab {
+                        right: 17%;
+                    }
+                    @include m.sp {
+                        right: 12%;
+                    }
+                }
+                &::after {
+                    right: 20%;
+                    @include m.tab {
+                        right: 15%;
+                    }
+                    @include m.sp {
+                        right: 10%
+                    }
+                }
+
+                &:hover {
+                    background-color: #fff;
+                    font-weight: bold;
+                }
+
+                &:hover::before {
+                    right: 12%;
+                    @include m.tab {
+                        right: 7%;
+                    }
+                    @include m.sp {
+                        right: 2%;
+                    }
+                }
+                &:hover::after {
+                    right: 10%;
+                    @include m.tab {
+                        right: 5%;
+                    }
+                    @include m.tab {
+                        right: 1%;
+                    }
+                }
+
+            }
+        }
+
+        &--photo {
+            width: 30%;
+
+            @include m.tab {
+                display: flex;
+                width: 100%;
+                margin-top: 50px;
+            }
+
+            .img-wrapper {
+                width: 80%;
+                height: 200px;
+                border-radius: 100px;
+                overflow: hidden; // これ重要！影が画像にぴったり沿うように
+                position: relative;
+
+                & + .img-wrapper {
+                    margin-top: 40px;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: inherit;
+                    box-shadow: inset 0 0 5px 5px #F5F5DC; // 例: 内側にうっすら影
+                }
+                &:nth-child(2) {
+                    margin-left: 15%;
+                }
+            
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    border-radius: inherit;
+                }
+            
+            }
+        }
+    }
+}
+
+@keyframes sway {
+    0%   { transform: rotate(5deg); }
+    50%  { transform: rotate(0deg); }
+    100% { transform: rotate(5deg); }
+}

@@ -1,0 +1,101 @@
+@use '../_mixin' as m;
+
+.access__flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+
+    @include m.tab {
+        flex-direction: column;
+    }
+
+    .map {
+        width: 80%;
+        height: 380px;
+        border-radius: 10px;
+        border: 1px rgba(92, 75, 59, 0.3) solid;
+        overflow: hidden;
+        margin: 0 auto; // 中央にしたい場合
+
+        @include m.tab {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none; // ← 親にボーダーあるから iframe 自体の枠を消す
+        }
+    }
+    .summary {
+        width: 100%;
+        padding-left: 20px;
+
+        @include m.tab {
+            padding-left: 0;
+        }
+
+        .about {
+            width: 100%;
+            margin-block: 20px;
+            font-size: 0.85rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            
+            td {
+                padding: 10px;
+
+                &.label {
+                    background-color: #A6C48A;
+                    border: 1px rgba(92, 75, 59, 0.3) solid;
+                    @include m.tab {
+                        width: 20%;
+                    }
+                }
+                &.descriptor {
+                    background-color: #fff;
+                    border: 1px rgba(92, 75, 59, 0.3) solid;
+                    @include m.tab {
+                        width: 80%;
+                    }
+                }
+
+                &.left-top-radius {
+                    border-top-left-radius: 10px;
+                }
+                &.right-top-radius {
+                    border-top-right-radius: 10px;
+                }
+                &.left-bottom-radius {
+                    border-bottom-left-radius: 10px;
+                }
+                &.right-bottom-radius {
+                    border-bottom-right-radius: 10px;
+                }
+            }
+        }
+
+        .people {
+            margin-block: 20px;
+            font-size: 0.85rem;
+            text-align: center;
+            margin: 0 auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            th {
+                border-bottom: 1px rgba(92, 75, 59, 0.3) solid;
+                font-weight: normal;
+            }
+            th, td {
+                padding: 5px 7px;
+                border-right: 1px rgba(92, 75, 59, 0.3) solid;
+                &:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}

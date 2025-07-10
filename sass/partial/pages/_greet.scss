@@ -1,0 +1,100 @@
+@use '../_mixin' as m;
+
+.greet {
+    @include m.tab {
+        font-size: 0.9rem;
+    }
+
+    &__flex {
+        display: flex;
+        margin-bottom: 40px;
+
+        @include m.sp {
+            flex-direction: column;
+        }
+
+        &--principal {
+            display: flex;    
+            flex-direction: column;
+            width: 40%;
+            text-align: center;
+            padding-right: 20px;
+
+            @include m.sp {
+                width: 100%;
+                margin-bottom: 30px;
+                padding-right: 0;
+            }
+            img {
+                border-radius: 10px;
+                margin-bottom: 10px;
+                object-fit: cover;
+                @include m.sp {
+                    height: 45vh;
+                }
+            }
+        }
+
+        &--text {
+            width: 60%;
+            padding-inline: 2%;
+
+            @include m.sp {
+                width: 100%;
+            }
+        }
+
+    }
+
+    .initiative-btn {
+        display: inline-block;
+        background-color: #A6C48A;
+        border: 3px #A6C48A solid;
+        border-radius: 6px;
+        padding: 2% 15%;
+        margin-bottom: 50px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        transition: .3s ease;
+        position: relative;
+
+        @include m.sp {
+            width: 100%;
+        }
+        
+        &::before,
+        &::after {
+            position: absolute;
+            top: 50%;
+            // 45度左に回転
+            transform: translateY(-50%) rotate(45deg);
+            right: 15%;
+            content: "";
+            border-top: #5C4B3B 2px solid;
+            border-right: #5C4B3B 2px solid;
+            width: 15px;
+            height: 15px;
+            transition: right .3s ease;
+        }
+
+        &::before {
+            right: 17%;
+        }
+        &::after {
+            right: 15%;
+        }
+
+        &:hover {
+            background-color: #fff;
+            font-weight: bold;
+        }
+
+        &:hover::before {
+            right: 7%;
+        }
+        &:hover::after {
+            right: 5%;
+        }
+
+    }
+
+}
