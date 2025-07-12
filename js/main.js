@@ -4,31 +4,43 @@ $(function () {
   /*=================================================
   Loading画面
   ===================================================*/
-  $(window).on('load', function () {
-    // ハッシュがあるかチェック
-    const hasHash = window.location.hash;
-    
-    console.log(hasHash);
-
-    if (hasHash) {
-      // ハッシュ付き → ローディング非表示、即表示＆スクロール
-      $('.loading').hide();
-      $('.main-content').show();
-      const target = $(hasHash);
-      if (target.length) {
-        const position = target.offset().top - 80;
-        $('html, body').scrollTop(position); // アニメーションじゃなく即座にジャンプ
-      }
-  
-    } else {
-      // ハッシュなし → 通常通りローディング画面を出す
-      console.log("通常通り表示！");
+    const finishLoading = function () {
       $('.loading').fadeOut(800, function () {
         $('.main-content').fadeIn(500);
       });
-    }
+    };
+  
+    const scrollToHash = function () {
+      const hasHash = window.location.hash;
+      console.log("hash:", hasHash);
+  
+      if (hasHash) {
+        $('.loading').hide();
+        $('.main-content').show();
+        const target = $(hasHash);
+        if (target.length) {
+          const position = target.offset().top - 80;
+          $('html, body').scrollTop(position);
+        }
+      } else {
+        finishLoading();
+      }
+    };
+  
+    // loadがうまくいけばそれでOK
+    $(window).on('load', function () {
+      console.log("✅ on load 実行");
+      clearTimeout(fallbackTimer);
+      scrollToHash();
+    });
+  
+    // 万が一 load が動かなかったときの保険
+    const fallbackTimer = setTimeout(function () {
+      console.warn("⚠️ loadイベントが発火しなかったので強制実行");
+      scrollToHash();
+    }, 4000); // 4秒待っても動かなければ強制表示
   });
-});
+  
 
 $(function () {
   /*=================================================
