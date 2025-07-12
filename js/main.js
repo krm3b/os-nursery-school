@@ -38,7 +38,7 @@ $(function () {
     const fallbackTimer = setTimeout(function () {
       console.warn("⚠️ loadイベントが発火しなかったので強制実行");
       scrollToHash();
-    }, 4000); // 4秒待っても動かなければ強制表示
+    }, 3000); // 3秒待っても動かなければ強制表示
   });
   
 
