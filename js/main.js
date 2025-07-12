@@ -7,7 +7,9 @@ $(function () {
   $(window).on('load', function () {
     // ハッシュがあるかチェック
     const hasHash = window.location.hash;
-  
+    
+    console.log(hasHash);
+
     if (hasHash) {
       // ハッシュ付き → ローディング非表示、即表示＆スクロール
       $('.loading').hide();
