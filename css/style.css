@@ -827,6 +827,11 @@ footer .back-to-top__text {
   height: 100vh;
   padding-block: 100px;
 }
+@media (max-width: 500px) {
+  .life {
+    height: 900px;
+  }
+}
 .life__toggle-btn {
   display: none;
   justify-content: center;
