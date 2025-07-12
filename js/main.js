@@ -20,6 +20,7 @@ $(function () {
   
     } else {
       // ハッシュなし → 通常通りローディング画面を出す
+      console.log("通常通り表示！");
       $('.loading').fadeOut(800, function () {
         $('.main-content').fadeIn(500);
       });
